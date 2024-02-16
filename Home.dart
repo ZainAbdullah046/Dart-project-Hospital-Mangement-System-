@@ -1,8 +1,9 @@
 import 'dart:io';
+import "Owner.dart";
 
-void main() {
+home() {
   print("welcome to Hospital Management System");
-  String decision;
+  String decision = "";
   do {
     print("PRESS 1 TO LOGIN AS OWNER");
     print("PRESS 2 TO LOGIN AS EMPLOYEE");
@@ -10,8 +11,7 @@ void main() {
     print("PRESS 4 TO LOGIN AS PHARMACIST");
     int choice = int.parse(stdin.readLineSync()!);
     if (choice == 1) {
-      //owner();
-      print("hello O");
+      owner();
     } else if (choice == 2) {
       //employee();
       print("hello E");
@@ -26,5 +26,10 @@ void main() {
     }
     print("PRESS 'T' TO TERMINATE AND 'C' TO CONTINUE");
     decision = stdin.readLineSync()!;
-  } while (decision.toUpperCase() != 'T');
+  } while (decision.toUpperCase() != "T");
+}
+
+void main() {
+  print("welcome to Hospital Management System");
+  home();
 }
