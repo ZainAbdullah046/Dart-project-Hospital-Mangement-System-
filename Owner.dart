@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'Home.dart'; // Assuming Home.dart contains the home function
+import 'Home.dart';
+import 'dart:math';
 
 void owner() {
   List<Map<String, String>> ownerInformation = [
@@ -23,7 +24,7 @@ void owner() {
           print("PRESS 4 TO GO TO HOME PAGE");
           int choice = int.parse(stdin.readLineSync()!);
           if (choice == 1) {
-            // enterEmployeeData();
+            enterEmployeeData();
           } else if (choice == 2) {
             //updateEmployeeData();
           } else if (choice == 3) {
@@ -41,4 +42,47 @@ void owner() {
       }
     }
   } while (decision.toUpperCase() != "T");
+}
+
+void enterEmployeeData() {
+  List<Map<String, dynamic>> employeeInformation = [];
+  while (true) {
+    print("\nEnter details for a new employee:");
+    print("Enter the name of the employee:");
+    String name = stdin.readLineSync()!;
+    print("Enter the age of the employee:");
+    int age = int.tryParse(stdin.readLineSync()!) ?? 0;
+    print("Enter the gender of the employee:");
+    String gender = stdin.readLineSync()!;
+    String userId = generateUserId(name); // Generate User ID
+
+    Map<String, dynamic> employee = {
+      "userId": userId,
+      "name": name,
+      "age": age,
+      "gender": gender,
+    };
+
+    employeeInformation.add(employee);
+
+    print("\nDo you want to enter another employee record? (yes/no)");
+    String response = stdin.readLineSync()!.toLowerCase();
+    if (response != 'yes') {
+      break;
+    }
+  }
+}
+
+String generateUserId(String userName) {
+  // Create a random number between 10000 and 99999
+  int randomNum = 10000 + Random().nextInt(90000);
+
+  // Extract the first 3 characters of the username (if available)
+  String userNamePrefix =
+      userName.length >= 2 ? userName.substring(0, 2).toUpperCase() : "H0";
+
+  // Concatenate the username prefix with the random number
+  String userId = '$userNamePrefix$randomNum';
+
+  return userId;
 }
