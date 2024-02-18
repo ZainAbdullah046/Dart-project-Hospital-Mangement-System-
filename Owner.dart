@@ -30,8 +30,10 @@ void owner(List<Map<String, dynamic>> employeeInformation) {
           } else if (choice == 2) {
             updateEmployeeData(employeeInformation);
           } else if (choice == 3) {
-            //deleteEmployeeData();
+            deleteEmployeeData(employeeInformation);
           } else if (choice == 4) {
+            checkAllRecord(employeeInformation);
+          } else if (choice == 5) {
             home(employeeInformation);
           } else {
             print("Invalid Choice");
@@ -57,7 +59,7 @@ void enterEmployeeData(List<Map<String, dynamic>> employeeInformation) {
     print("Enter the gender of the employee:");
     String gender = stdin.readLineSync()!;
     String userId = generateUserId(name); // Generate User ID
-
+    print("userId :$userId");
     Map<String, dynamic> employee = {
       "userId": userId,
       "name": name,
@@ -70,7 +72,7 @@ void enterEmployeeData(List<Map<String, dynamic>> employeeInformation) {
     print("\nDo you want to enter another employee record? (yes/no)");
     String response = stdin.readLineSync()!.toLowerCase();
     if (response != 'yes') {
-      break;
+      home(employeeInformation);
     }
   }
 }
@@ -118,8 +120,39 @@ void updateEmployeeData(List<Map<String, dynamic>> employeeInformation) {
       print("Invalid employee name or ID. Do you want to try again? (yes/no)");
       String tryAgain = stdin.readLineSync()!.toLowerCase();
       if (tryAgain != "yes") {
-        break; // Exit the loop if the user doesn't want to try again
+        owner(employeeInformation);
       }
     }
   }
+}
+
+void deleteEmployeeData(List<Map<String, dynamic>> employeeInformation) {
+  bool isValidInput = false;
+  print("Enter the name of Employee :");
+  String name = stdin.readLineSync()!;
+  print("Enter the ID of the user :");
+  String id = stdin.readLineSync()!;
+  while (!isValidInput) {
+    for (var information in employeeInformation) {
+      if (name == information["name"] && id == information["userId"]) {
+        isValidInput = true;
+        information.remove("userId");
+        information.remove("name");
+        information.remove("age");
+        information.remove("gender");
+        break;
+      }
+    }
+    if (!isValidInput) {
+      print("Invalid employee name or ID. Do you want to try again? (yes/no)");
+      String tryAgain = stdin.readLineSync()!.toLowerCase();
+      if (tryAgain != "yes") {
+        owner(employeeInformation);
+      }
+    }
+  }
+}
+
+void checkAllRecord(List<Map<String, dynamic>> employeeInformation) {
+  print(employeeInformation);
 }
