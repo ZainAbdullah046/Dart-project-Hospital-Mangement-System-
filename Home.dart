@@ -1,7 +1,11 @@
 import 'dart:io';
 import "Owner.dart";
+import "Employee.dart";
 
-home(List<Map<String, dynamic>> employeeInformation) {
+home(
+    List<Map<String, dynamic>> employeeInformation,
+    List<Map<String, dynamic>> doctorInformation,
+    List<Map<String, dynamic>> patientInformation) {
   print("welcome to Hospital Management System");
   String decision = "";
   do {
@@ -11,10 +15,9 @@ home(List<Map<String, dynamic>> employeeInformation) {
     print("PRESS 4 TO LOGIN AS PHARMACIST");
     int choice = int.parse(stdin.readLineSync()!);
     if (choice == 1) {
-      owner(employeeInformation);
+      owner(employeeInformation, doctorInformation, patientInformation);
     } else if (choice == 2) {
-      //employee();
-      print("hello E");
+      employee(employeeInformation, doctorInformation, patientInformation);
     } else if (choice == 3) {
       //doctor();
       print("hello D");
@@ -32,6 +35,8 @@ home(List<Map<String, dynamic>> employeeInformation) {
 void main() {
   print("welcome to Hospital Management System");
   List<Map<String, dynamic>> employeeInformation = [];
+  List<Map<String, dynamic>> doctorInformation = [];
+  List<Map<String, dynamic>> patientInformation = [];
 
-  home(employeeInformation);
+  home(employeeInformation, doctorInformation, patientInformation);
 }
