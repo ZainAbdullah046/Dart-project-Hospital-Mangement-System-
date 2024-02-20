@@ -1,11 +1,12 @@
 import 'dart:io';
 import 'dart:math';
 import "Home.dart";
+import 'dart:collection';
 
 void owner(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   List<Map<String, String>> ownerInformation = [
     {"name": "Zain", "password": "zain123"},
     {"name": "Rafique", "password": "rafique123"},
@@ -60,7 +61,7 @@ void owner(
 void enterEmployeeData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   while (true) {
     print("\nEnter details for a new employee:");
     print("Enter the name of the employee:");
@@ -83,7 +84,7 @@ void enterEmployeeData(
     print("\nDo you want to enter another employee record? (yes/no)");
     String response = stdin.readLineSync()!.toLowerCase();
     if (response != 'yes') {
-      owner(employeeInformation, doctorInformation, doctorInformation);
+      owner(employeeInformation, doctorInformation, patientInformation);
     }
   }
 }
@@ -105,7 +106,7 @@ String generateUserId(String userName) {
 void updateEmployeeData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   bool isValidInput = false;
 
   while (!isValidInput) {
@@ -134,7 +135,7 @@ void updateEmployeeData(
       print("Invalid employee name or ID. Do you want to try again? (yes/no)");
       String tryAgain = stdin.readLineSync()!.toLowerCase();
       if (tryAgain != "yes") {
-        owner(employeeInformation, doctorInformation, doctorInformation);
+        owner(employeeInformation, doctorInformation, patientInformation);
       }
     }
   }
@@ -143,7 +144,7 @@ void updateEmployeeData(
 void deleteEmployeeData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   bool isValidInput = false;
   print("Enter the name of Employee :");
   String name = stdin.readLineSync()!;
@@ -164,7 +165,7 @@ void deleteEmployeeData(
       print("Invalid employee name or ID. Do you want to try again? (yes/no)");
       String tryAgain = stdin.readLineSync()!.toLowerCase();
       if (tryAgain != "yes") {
-        owner(employeeInformation, doctorInformation, doctorInformation);
+        owner(employeeInformation, doctorInformation, patientInformation);
       }
     }
   }
@@ -173,6 +174,6 @@ void deleteEmployeeData(
 void checkAllRecord(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   print(employeeInformation);
 }

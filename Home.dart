@@ -1,3 +1,4 @@
+import "dart:collection";
 import 'dart:io';
 import "Owner.dart";
 import "Employee.dart";
@@ -5,7 +6,7 @@ import "Employee.dart";
 home(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   print("welcome to Hospital Management System");
   String decision = "";
   do {
@@ -36,7 +37,7 @@ void main() {
   print("welcome to Hospital Management System");
   List<Map<String, dynamic>> employeeInformation = [];
   List<Map<String, dynamic>> doctorInformation = [];
-  List<Map<String, dynamic>> patientInformation = [];
+  Queue<Map<String, dynamic>> patientInformation = Queue();
 
   home(employeeInformation, doctorInformation, patientInformation);
 }

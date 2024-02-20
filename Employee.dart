@@ -1,11 +1,12 @@
 import 'dart:io';
-import 'dart:math';
 import "Home.dart";
+import "Owner.dart";
+import "dart:collection";
 
 void employee(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   String decision = "";
   do {
     print("ENTER YOUR NAME ");
@@ -63,7 +64,7 @@ void employee(
 void enterDoctorData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   while (true) {
     print("\nEnter details for a new doctor:");
     print("Enter the name of the doctor:");
@@ -94,20 +95,6 @@ void enterDoctorData(
   }
 }
 
-String generateUserId(String userName) {
-  // Create a random number between 10000 and 99999
-  int randomNum = 100 + Random().nextInt(200);
-
-  // Extract the first 3 characters of the username (if available)
-  String userNamePrefix =
-      userName.length >= 2 ? userName.substring(0, 2).toUpperCase() : "H0";
-
-  // Concatenate the username prefix with the random number
-  String userId = '$userNamePrefix$randomNum';
-
-  return userId;
-}
-
 void checkDoctorAllRecord(doctorInformation) {
   print(doctorInformation);
 }
@@ -115,7 +102,7 @@ void checkDoctorAllRecord(doctorInformation) {
 void updateDoctorData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   bool isValidInput = false;
 
   while (!isValidInput) {
@@ -145,7 +132,7 @@ void updateDoctorData(
       print("Invalid doctor name or ID. Do you want to try again? (yes/no)");
       String tryAgain = stdin.readLineSync()!.toLowerCase();
       if (tryAgain != "yes") {
-        employee(employeeInformation, doctorInformation, doctorInformation);
+        employee(employeeInformation, doctorInformation, patientInformation);
       }
     }
   }
@@ -154,7 +141,7 @@ void updateDoctorData(
 void deleteDoctorData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    List<Map<String, dynamic>> patientInformation) {
+    Queue<Map<String, dynamic>> patientInformation) {
   bool isValidInput = false;
   print("Enter the name of doctor :");
   String name = stdin.readLineSync()!;
@@ -176,8 +163,13 @@ void deleteDoctorData(
       print("Invalid employee name or ID. Do you want to try again? (yes/no)");
       String tryAgain = stdin.readLineSync()!.toLowerCase();
       if (tryAgain != "yes") {
-        employee(employeeInformation, doctorInformation, doctorInformation);
+        employee(employeeInformation, doctorInformation, patientInformation);
       }
     }
   }
 }
+
+void enterPatientData(
+    List<Map<String, dynamic>> employeeInformation,
+    List<Map<String, dynamic>> doctorInformation,
+    Queue<Map<String, dynamic>> patientInformation) {}
