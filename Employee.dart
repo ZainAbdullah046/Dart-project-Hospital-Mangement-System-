@@ -38,15 +38,19 @@ void employee(
             deleteDoctorData(
                 employeeInformation, doctorInformation, patientInformation);
           } else if (choice == 4) {
-            //enterPatientData(patientInformation);
+            enterPatientData(
+                employeeInformation, doctorInformation, patientInformation);
           } else if (choice == 5) {
-            //updatePatientData(patientInformation);
+            updatePatientData(
+                employeeInformation, doctorInformation, patientInformation);
           } else if (choice == 6) {
-            //deletePatientData(patientInformation);
+            //deletePatientData(employeeInformation, doctorInformation, patientInformation);
           } else if (choice == 7) {
-            checkDoctorAllRecord(doctorInformation);
+            checkDoctorAllRecord(
+                employeeInformation, doctorInformation, patientInformation);
           } else if (choice == 8) {
-            //checkPatientAllRecord(patientInformation);
+            checkPatientAllRecord(
+                employeeInformation, doctorInformation, patientInformation);
           } else if (choice == 9) {
             home(employeeInformation, doctorInformation, patientInformation);
           }
@@ -95,7 +99,10 @@ void enterDoctorData(
   }
 }
 
-void checkDoctorAllRecord(doctorInformation) {
+void checkDoctorAllRecord(
+    List<Map<String, dynamic>> employeeInformation,
+    List<Map<String, dynamic>> doctorInformation,
+    Queue<Map<String, dynamic>> patientInformation) {
   print(doctorInformation);
 }
 
@@ -172,4 +179,82 @@ void deleteDoctorData(
 void enterPatientData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
-    Queue<Map<String, dynamic>> patientInformation) {}
+    Queue<Map<String, dynamic>> patientInformation) {
+  while (true) {
+    print("\nEnter details for a new patient:");
+    print("Enter the name of the patient :");
+    String name = stdin.readLineSync()!;
+    print("Enter the age of the patient:");
+    int age = int.tryParse(stdin.readLineSync()!) ?? 0;
+    print("Enter the gender of the patient:");
+    String gender = stdin.readLineSync()!;
+    print("Enter the year of disease of the doctor");
+    String disease = stdin.readLineSync()!;
+    String userId = generateUserId(name); // Generate User ID
+    print("userId :$userId");
+    Map<String, dynamic> doctor = {
+      "userId": userId,
+      "name": name,
+      "age": age,
+      "gender": gender,
+      "disease": disease,
+      "medicen": "",
+    };
+
+    doctorInformation.add(doctor);
+
+    print("\nDo you want to enter another employee record? (yes/no)");
+    String response = stdin.readLineSync()!.toLowerCase();
+    if (response != 'yes') {
+      employee(employeeInformation, doctorInformation, patientInformation);
+    }
+  }
+}
+
+void updatePatientData(
+    List<Map<String, dynamic>> employeeInformation,
+    List<Map<String, dynamic>> doctorInformation,
+    Queue<Map<String, dynamic>> patientInformation) {
+  bool isValidInput = false;
+
+  while (!isValidInput) {
+    print("Enter the name of patient :");
+    String name = stdin.readLineSync()!;
+    print("Enter the ID of the patient :");
+    String id = stdin.readLineSync()!;
+
+    for (var information in patientInformation) {
+      if (name == information["name"] && id == information["userId"]) {
+        isValidInput = true;
+        print("Now enter the updated information :");
+        print("Enter the name of the patient:");
+        information["name"] = stdin.readLineSync()!;
+        print("Enter the age of the patient:");
+        information["age"] = int.tryParse(stdin.readLineSync()!) ?? 0;
+        print("Enter the gender of the patient:");
+        information["gender"] = stdin.readLineSync()!;
+        print("Enter the updated id");
+        information["userId"] = stdin.readLineSync()!;
+        print("Enter the updated disease");
+        information["disease"] = stdin.readLineSync()!;
+        print("doctor information updated successfully.");
+        break;
+      }
+    }
+
+    if (!isValidInput) {
+      print("Invalid patient name or ID. Do you want to try again? (yes/no)");
+      String tryAgain = stdin.readLineSync()!.toLowerCase();
+      if (tryAgain != "yes") {
+        employee(employeeInformation, doctorInformation, patientInformation);
+      }
+    }
+  }
+}
+
+void checkPatientAllRecord(
+    List<Map<String, dynamic>> employeeInformation,
+    List<Map<String, dynamic>> doctorInformation,
+    Queue<Map<String, dynamic>> patientInformation) {
+  print(patientInformation);
+}
