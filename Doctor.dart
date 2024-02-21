@@ -15,6 +15,7 @@ void doctor(
     bool validCredentials = false;
     for (var information in doctorInformation) {
       if (name == information["name"] && password == information["userId"]) {
+        // //checking the doctor information
         validCredentials = true;
         do {
           print("PRESS 1 TO TREATE PATEIENT ");

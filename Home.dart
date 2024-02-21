@@ -8,7 +8,6 @@ home(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
     Queue<Map<String, dynamic>> patientInformation) {
-  print("welcome to Hospital Management System");
   String decision = "";
   do {
     print("PRESS 1 TO LOGIN AS OWNER");

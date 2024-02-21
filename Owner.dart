@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'Employee.dart';
 import "Home.dart";
 import 'dart:collection';
 
@@ -23,6 +22,7 @@ void owner(
     bool validCredentials = false;
     for (var owner in ownerInformation) {
       if (name == owner["name"] && password == owner["password"]) {
+        //checking the owner information
         validCredentials = true;
         do {
           print("PRESS 1 TO ENTER THE NEW EMPLOYEE DATA ");
@@ -105,6 +105,7 @@ String generateUserId(String userName) {
   return userId;
 }
 
+// update employee data
 void updateEmployeeData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -143,6 +144,7 @@ void updateEmployeeData(
   }
 }
 
+// delete employeee data
 void deleteEmployeeData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -173,6 +175,7 @@ void deleteEmployeeData(
   }
 }
 
+// check all record of the employee
 void checkAllRecord(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,

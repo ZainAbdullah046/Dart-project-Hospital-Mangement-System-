@@ -16,6 +16,7 @@ void employee(
     bool validCredentials = false;
     for (var employee in employeeInformation) {
       if (name == employee["name"] && userId == employee["userId"]) {
+        // //checking the employee information
         validCredentials = true;
         do {
           print("PRESS 1 TO ENTER THE NEW DOCTOR DATA");
@@ -66,6 +67,7 @@ void employee(
   } while (decision.toLowerCase() == "yes");
 }
 
+// enter the doctor record
 void enterDoctorData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -100,6 +102,7 @@ void enterDoctorData(
   }
 }
 
+//check all doctor record
 void checkDoctorAllRecord(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -114,6 +117,7 @@ void checkDoctorAllRecord(
   }
 }
 
+// update doctor record
 void updateDoctorData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -128,6 +132,8 @@ void updateDoctorData(
 
     for (var information in doctorInformation) {
       if (name == information["name"] && id == information["userId"]) {
+        // //checking the doctor information
+
         isValidInput = true;
         print("Now enter the updated information :");
         print("Enter the name of the doctor:");
@@ -153,6 +159,7 @@ void updateDoctorData(
   }
 }
 
+// delete doctor record
 void deleteDoctorData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -165,6 +172,7 @@ void deleteDoctorData(
   while (!isValidInput) {
     for (var information in doctorInformation) {
       if (name == information["name"] && id == information["userId"]) {
+        // //checking the doctor information
         isValidInput = true;
         information.remove("userId");
         information.remove("name");
@@ -184,6 +192,7 @@ void deleteDoctorData(
   }
 }
 
+// enter the patient record
 void enterPatientData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -218,6 +227,7 @@ void enterPatientData(
   }
 }
 
+//update patient data
 void updatePatientData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -232,6 +242,7 @@ void updatePatientData(
 
     for (var information in patientInformation) {
       if (name == information["name"] && id == information["userId"]) {
+        // //checking the patient information
         isValidInput = true;
         print("Now enter the updated information :");
         print("Enter the name of the patient:");
@@ -259,6 +270,7 @@ void updatePatientData(
   }
 }
 
+// check all record of patient
 void checkPatientAllRecord(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -273,6 +285,7 @@ void checkPatientAllRecord(
   }
 }
 
+// delete patient data
 void deletePatientData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -285,6 +298,7 @@ void deletePatientData(
   while (!isValidInput) {
     for (var information in doctorInformation) {
       if (name == information["name"] && id == information["userId"]) {
+        // //checking the patient information
         isValidInput = true;
         information.remove("userId");
         information.remove("name");
