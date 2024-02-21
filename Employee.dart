@@ -75,7 +75,7 @@ void enterDoctorData(
     print("Enter the name of the doctor:");
     String name = stdin.readLineSync()!;
     print("Enter the age of the doctor:");
-    int age = int.tryParse(stdin.readLineSync()!) ?? 0;
+    int age = int.tryParse(stdin.readLineSync()!) ?? 0; //null saftey
     print("Enter the gender of the doctor:");
     String gender = stdin.readLineSync()!;
     print("Enter the year of experience of the doctor");
@@ -199,7 +199,6 @@ void enterPatientData(
       "age": age,
       "gender": gender,
       "disease": disease,
-      "medicen": "",
     };
 
     doctorInformation.add(doctor);
@@ -279,7 +278,6 @@ void deletePatientData(
         information.remove("gender");
         information.remove("experience");
         information.remove("disease");
-        information.remove("medicen");
         break;
       }
     }

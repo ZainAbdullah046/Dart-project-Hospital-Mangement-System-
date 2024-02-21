@@ -58,6 +58,7 @@ void owner(
   } while (decision.toLowerCase() == "yes");
 }
 
+// Enter employee data
 void enterEmployeeData(
     List<Map<String, dynamic>> employeeInformation,
     List<Map<String, dynamic>> doctorInformation,
@@ -90,7 +91,7 @@ void enterEmployeeData(
 }
 
 String generateUserId(String userName) {
-  // Create a random number between 10000 and 99999
+  // Create a random number between 100 to 299
   int randomNum = 100 + Random().nextInt(200);
 
   // Extract the first 3 characters of the username (if available)

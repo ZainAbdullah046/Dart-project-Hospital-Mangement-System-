@@ -2,6 +2,7 @@ import "dart:collection";
 import 'dart:io';
 import "Owner.dart";
 import "Employee.dart";
+import "Doctor.dart";
 
 home(
     List<Map<String, dynamic>> employeeInformation,
@@ -13,18 +14,13 @@ home(
     print("PRESS 1 TO LOGIN AS OWNER");
     print("PRESS 2 TO LOGIN AS EMPLOYEE");
     print("PRESS 3 TO LOGIN AS DOCTOR");
-    print("PRESS 4 TO LOGIN AS PHARMACIST");
     int choice = int.parse(stdin.readLineSync()!);
     if (choice == 1) {
       owner(employeeInformation, doctorInformation, patientInformation);
     } else if (choice == 2) {
       employee(employeeInformation, doctorInformation, patientInformation);
     } else if (choice == 3) {
-      //doctor();
-      print("hello D");
-    } else if (choice == 4) {
-      //pharmacist();
-      print("hello P");
+      doctor(employeeInformation, doctorInformation, patientInformation);
     } else {
       print("Invalid input! Please enter a valid option.");
     }
