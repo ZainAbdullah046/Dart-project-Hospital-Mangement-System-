@@ -105,6 +105,13 @@ void checkDoctorAllRecord(
     List<Map<String, dynamic>> doctorInformation,
     Queue<Map<String, dynamic>> patientInformation) {
   print(doctorInformation);
+  print("PRESS B TO GO BACK TO EMPLOYEE MENU");
+  String back = stdin.readLineSync()!;
+  if (back.toUpperCase() == "B") {
+    employee(employeeInformation, doctorInformation, patientInformation);
+  } else {
+    home(employeeInformation, doctorInformation, patientInformation);
+  }
 }
 
 void updateDoctorData(
@@ -257,6 +264,13 @@ void checkPatientAllRecord(
     List<Map<String, dynamic>> doctorInformation,
     Queue<Map<String, dynamic>> patientInformation) {
   print(patientInformation);
+  print("PRESS B TO GO BACK TO EMPLOYEE MENU");
+  String back = stdin.readLineSync()!;
+  if (back.toUpperCase() == "B") {
+    employee(employeeInformation, doctorInformation, patientInformation);
+  } else {
+    home(employeeInformation, doctorInformation, patientInformation);
+  }
 }
 
 void deletePatientData(

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'Employee.dart';
 import "Home.dart";
 import 'dart:collection';
 
@@ -177,4 +178,11 @@ void checkAllRecord(
     List<Map<String, dynamic>> doctorInformation,
     Queue<Map<String, dynamic>> patientInformation) {
   print(employeeInformation);
+  print("PRESS B TO GO BACK TO OWNER MENU");
+  String back = stdin.readLineSync()!;
+  if (back.toUpperCase() == "B") {
+    owner(employeeInformation, doctorInformation, patientInformation);
+  } else {
+    home(employeeInformation, doctorInformation, patientInformation);
+  }
 }
